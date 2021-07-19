@@ -1,0 +1,141 @@
+{% load static %}
+
+	<html>
+  <head>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>FIESULEC</title>
+
+    
+    <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+       <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+       <link href="{% static 'css/style.css' %}" rel="stylesheet">
+       <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+       <link href="{% static 'css/flaticon.css' %}" rel="stylesheet">
+     <link href="{% static 'css/aos.css' %}" rel="stylesheet">
+
+
+	     
+	 <nav class="navbar nav-bar navbar-expand-md  fixed-top">
+		<a href="" class="navbar-brand">iVest</a>
+		<button class="navbar-toggler" type="button"
+		data-toggle="collapse"
+		data-target="#toggleMobileMenu"
+		aria-controls="#toggleMobileMenu"
+		aria-expanded="false"
+		aria-label="Toggle navigation">
+			<span class="oi oi-menu"><i class="fa fa-bars"></i></span>
+		</button>
+
+		<div class="collapse navbar-collapse " id="toggleMobileMenu">
+			<ul class="navbar-nav ml-auto  ">
+				<li class="nav-item">
+					<a href="{% url 'app:home' %} " class="nav-link nav-w">Home</a>
+				</li>
+
+				<li class="nav-item">
+					<a href="#about" class="nav-link nav-w">About</a>
+				</li>
+
+				<li class="nav-item">
+					<a href="{% url 'app:services' %} " class="nav-link nav-w">Services</a>
+				</li>
+
+				<li class="nav-item">
+					<a href="{% url 'app:contact' %} " class="nav-link nav-w">Contact Us</a>
+				</li>
+
+				<li class="nav-item">
+					<a href="{% url 'accounts:login' %} " class="nav-link nav-w">Login</a>
+				</li>
+				
+				
+				<li class="nav-item">
+					<a href="{% url 'accounts:signup' %} " class="nav-link nav-w">Sign Up</a>
+				</li>
+	</nav>
+
+
+
+	<!-- END nav -->
+	    <div class=" container mt-5 pt-3 message">
+   		 {% if messages %}
+			<div class="row justify-content-center">
+        	{% for message in messages %}
+        <div class=" alert alert-dismissible text-center fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+		</div>
+    {% endif %}
+    </div>
+	{% block content %}
+
+
+	{% endblock %}
+
+	
+	<footer>
+		<div class="container footer-body">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 col-md-12 text-center">
+					<p>
+						<a href="">
+							Home
+						</a>
+
+					</p>
+
+					<p>
+						<a href="">
+							Contact
+						</a>    
+					</p>
+
+					<div class="row mt-5">
+						<div class="col-12  mt-5 text-center">
+							Copyright © 2021 manofsteel
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</di
+
+
+<script src="{% static 'js/ckeditor.js' %}"></script>
+
+
+
+
+<script>
+	ClassicEditor
+		.create( document.querySelector( '#editor' ), {
+			toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+		} )
+		.then( editor => {
+			window.editor = editor;
+		} )
+		.catch( err => {
+			console.error( err.stack );
+		} );
+</script>
+ <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/popper.min.js'%}"></script>
+  <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'aos/aos.js' %}"></script>
+
+
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>

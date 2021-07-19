@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-6">
+                <div class="contact-intro">
+                    <h2>
+                        Contact Us
+                    </h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <div class="contact-address">
+                        
+                        <span class="fa fa-home">
+                           <span> 10 , Victoria Tomire Crescent , Iyin City , Nigeria</span>
+                        </span>
+
+                        <span class="fa fa-inbox">
+                            <span>akinwumikaliyanu@gmail.com</span>
+                        </span>
+
+                        <span class="fa fa-phone">
+                            <span>+2347065487342 </span>
+                        </span>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-7 col-md-6 mt-2 form-page">
+                <h2 class="text-center">
+                    Send Us A Mail
+                </h2>
+                    <form action="">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 col-md-12  mt-2 ">
+                                
+                            <div class="form-group">
+                                <label for="Full Name" class="form-label">Full Name </label>
+                                <input type="text" class="form-control" name="Full_name" minlength="10">
+                            </div>
+                            </div>
+
+                            <div class="col-lg-8 col-md-12 mt-2 ">
+                                
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" >
+                                </div>
+                                </div>
+
+                                <div class="col-lg-8 col-md-12 mt-2 ">
+                                
+                                    <div class="form-group">
+                                        <label for="Subject" class="form-label">Subject</label>
+                                        <input type="text" class="form-control" name="subject" minlength="5">
+                                    </div>
+                                    </div>
+
+                                    <div class="col-lg-8 col-md-12 mt-2 ">
+                                
+                                        <div class="form-group">
+                                            <label for="Message" class="form-label">Message</label>
+                                            <textarea cols="5"  rows="7" class="form-control" name="message" minlength="10"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-8 col-md-12 mt-2 ">
+                                        <button class="btn btn-outline-white ">Push Your Message</button>
+                                    </div>
+                        </div>
+                    </form>
+            </div>
+
+        </div>
+
+        </div>
+    </div>
+</section>
+
+     
+{% endblock %}

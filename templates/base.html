@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+  <head>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>FIESU</title>
+    
+    <link href="{% static 'css/admin.css' %}"rel="stylesheet">
+    <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+
+  </head>
+</html>
+<body>
+ 
+
+        <input type="checkbox" name="" id="sidebar-toggle">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3 class="brand">
+                    <span class="fa fa-unlink"></span>
+                    <span>Idashboard</span>
+                </h3>
+                <label for="sidebar-toggle" class="fa fa-bars" ></label>
+            </div>
+            <div class="sidebar-menu">
+              
+
+                <ul>
+                    <li>
+                        <a href="{% url 'app:home' %}">
+                            <span class="fa fa-home"></span>
+                            <span>Home</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <span class="fa fa-list "></span>
+                            <span> Packages </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <span class="fa fa-clipboard"></span>
+                            <span>My Packages</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <span class="fa fa-file "></span>
+                            <span>Purchase History</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'accounts:logout' %}">
+                            <span class="fa fa-arrow-right"></span>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+    </div>
+            </div>
+
+ <div class="main-content">
+
+    
+
+        <header>
+
+        <div class="search-wrapper">
+         <span class="fa fa-search"></span>
+         <input type="search" placeholder="Search">
+         </div>
+
+         <div class="social-icons">
+            <span class=" fa fa-bell"></span>
+            <span class="fa fa-comment"></span>
+            <div></div>
+        </div>
+ 
+     </header>
+    
+
+    <main>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+    <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/typed.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <!--my main js-->
+  <script src="js/contact.js"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  
+  </body>
+</html>

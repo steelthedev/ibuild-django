@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+
+
+        <section class="signup">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-12">
+                       
+
+                        <form action="{% url 'accounts:signup' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-8">
+
+                                    <h1 class="mb-3">
+                                        Sign Up
+                                    </h1>
+
+                                    <div class="form-group mt-3">
+                                        <label for="username" class="username">Username</label>
+                                        <input type="email" class="form-control shadow-none" name="username">
+                                    </div>
+
+                                    <div class="form-group mt-3">
+                                        <label for="first name" class="username">First Name</label>
+                                        <input type="text" class="form-control shadow-none" name="f_name">
+                                    </div>
+
+                                    <div class="form-group mt-3">
+                                        <label for="Last Name" class="username">Last Name</label>
+                                        <input type="text" class="form-control shadow-none" name="l_name">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="password" class="username">Password</label>
+                                        <input type="password" class="form-control shadow-none" name="password">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password2" class="username">Repeat Password</label>
+                                        <input type="password" class="form-control shadow-none" name="password2">
+                                    </div>
+
+                                    <button class="btn btn-outline-white" type="submit">
+                                        Create Account
+                                    </button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+{% endblock %}
