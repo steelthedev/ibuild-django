@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="cart">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-12 mt-3 pt-3  ">
+            <table class="table table-bordered ">
+              <thead>
+                <tr>
+                <th>S/N</th>
+              <th>Package</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total</th>
+              </tr>
+              </thead>
+
+        {% for order_item in order.products.all %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+              <td>{{order_item.product.name}}</td>
+              
+              
+                <td>
+                 <a class="cart-link"href="">
+                <i class="fa fa-minus"></i>
+                </a>
+                {{order_item.quantity}}
+                <a class="cart-link"href="">
+                  <i class="fa fa-plus"></i>
+                </a>
+                
+                </td>
+              
+              
+                <td>${{order_item.product.price}}</td>
+              
+                <td>${{order_item.get_item_price}}</td>
+                
+                
+                <td><a class="btn btn-outline-white btn-danger" href=" "><i class="fa fa-trash "></i></a>
+                </td>
+              </tr>
+              
+              {% endfor %}
+              
+              <tr>
+                <td>Total price</td>
+                
+                <td colspan="5">${{order.get_cart_total}} </td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td colspan="5">
+                  <a class="btn cart-shop btn-outline-white pull-right" href="{%  url 'dashboard:dashboard' %}">
+                    Continue shopping
+                  </a>
+                </td>
+                {% if order.get_cart_total %}
+                <td colspan="5">
+                  <form >
+                    <script src="https://js.paystack.co/v1/inline.js"></script>
+                    <button type="button" onclick="payWithPaystack()"> Pay </button> 
+                  </form>
+                   
+                  <script>
+                    function payWithPaystack(){
+                      var handler = PaystackPop.setup({
+                        key: '{{paystack_public}}',
+                        email: '{{email}}',
+                        amount: {{order.get_cart_total}} * 100,
+                        currency: "NGN",
+                        ref: '{{ref}}',
+                        firstname: '{{first_name}}',
+                        lastname: '{{last_name}}',
+                        // label: "Optional string that replaces customer email"
+                        metadata: {
+                           custom_fields: [
+                              {
+                                  display_name: "Mobile Number",
+                                  variable_name: "mobile_number",
+                                  value: "+2348012345678"
+                              }
+                           ]
+                        },
+                        callback: function(response){
+                            alert('success. transaction ref is ' + response.reference);
+                        },
+
+                        callback: function(response){
+                            alert('declined. transaction ref is ' + response.reference);
+                        },
+
+                        onClose: function(){
+                            alert('window closed');
+                        }
+                      });
+                      handler.openIframe();
+                    }
+                  </script>
+                </td>
+                {% endif %}
+              </tr>
+              
+              
+            </table>
+          </div>
+      </div>
+    </div>
+    </section>
+    
+    
+    
+    
+    
+
+    
+
+{% endblock %}

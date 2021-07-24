@@ -3,115 +3,47 @@
 
 {% block content %}
 
+
+{% if messages %}
+<div class=" container mt-3 message">
+<div class="row justify-content-center">
+{% for message in messages %}
+<div class=" alert alert-dismissible text-center fade show" role="alert">
+{{ message }}
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+{% endfor %}
+</div>
+</div>
+{% endif %}
+
 <h2 class="dash-title">Packages</h2>
         <div class="container">
             <div class="dashboard-cards">
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 mt-3 ">
-                        <div class="card-single ">
-                            <div class="card-body">
-                                <span class="fa fa-briefcase"></span>
-                                <div>
-                                    <h5>Starter</h5>
-                                    <h4>$200</h4>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <a href="">View</a>
-                            </div>
-                        </div> 
-                </div>
 
-                <div class="col-lg-4 col-md-6 mt-3 ">
-                    <div class="card-single ">
-                        <div class="card-body">
-                            <span class="fa fa-briefcase"></span>
-                            <div>
-                                <h5>Starter Plus</h5>
-                                <h4>$250</h4>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="">View</a>
-                        </div>
-                    </div> 
-            </div>
-
-            <div class="col-lg-4 col-md-6 mt-3 ">
-                <div class="card-single ">
-                    <div class="card-body">
-                        <span class="fa fa-briefcase"></span>
-                        <div>
-                            <h5>Intermediate</h5>
-                            <h4>$350</h4>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View</a>
-                    </div>
-                </div> 
-        </div>
-
+               {% for product in products %}
         <div class="col-lg-4 col-md-6 mt-3 ">
             <div class="card-single ">
                 <div class="card-body">
                     <span class="fa fa-briefcase"></span>
                     <div>
-                        <h5>Intermediate Plus</h5>
-                        <h4>$350</h4>
+                        <h5>{{product.name}}</h5>
+                        <h4>${{product.price}}</h4>
                     </div>
                 </div>
                 <div class="card-footer">
                     <a href="">View</a>
+                    <a href="{% url 'dashboard:add_to_cart' product.slug %}">Add to Cart</a>
                 </div>
             </div> 
     </div>
 
-    <div class="col-lg-4 col-md-6 mt-3 ">
-        <div class="card-single ">
-            <div class="card-body">
-                <span class="fa fa-briefcase"></span>
-                <div>
-                    <h5>Pro Package</h5>
-                    <h4>$500</h4>
-                </div>
-            </div>
-            <div class="card-footer">
-                <a href="">View</a>
-            </div>
-        </div> 
-</div>
+    {% endfor %}
 
-<div class="col-lg-4 col-md-6 mt-3 ">
-    <div class="card-single ">
-        <div class="card-body">
-            <span class="fa fa-briefcase"></span>
-            <div>
-                <h5>Ultimate Pro</h5>
-                <h4>$750</h4>
-            </div>
-        </div>
-        <div class="card-footer">
-            <a href="">View</a>
-        </div>
-    </div> 
-</div>
-
-<div class="col-lg-4 col-md-6 mt-3 ">
-    <div class="card-single ">
-        <div class="card-body">
-            <span class="fa fa-briefcase"></span>
-            <div>
-                <h5>Special Package</h5>
-                <h4>$750 - Unlimited</h4>
-            </div>
-        </div>
-        <div class="card-footer">
-            <a href="">View</a>
-        </div>
-    </div> 
-</div>
-
+ 
 
            
 

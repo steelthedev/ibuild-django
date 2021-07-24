@@ -1,4 +1,8 @@
 from django.shortcuts import render, redirect
+from .models import *
+from django.shortcuts import get_object_or_404
+from random import randint
+from django.contrib import messages
 
 # Create your views here.
 
@@ -13,3 +17,5 @@ def Services(request):
 
 def Contact(request):
     return render(request, 'app/contact.html')
+
+

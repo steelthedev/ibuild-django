@@ -1,10 +1,11 @@
+
 :root{
     --main-color:#5e35b1;
     --color-dark:#1d2231;
     --text-grey:#8390a2;
     --secondary-color:#f3e5f5;
 }
-
+ 
 *{
     font-family: 'poppins', sans-serif;
     margin:0;
@@ -214,6 +215,35 @@ main .dashboard-cards .card-single .card-footer{
 .card-single .card-footer a{
     color: var(--main-color);
     text-decoration:none;
+}
+
+
+
+.message .alert{
+
+    padding: 20px;
+    background: var(--secondary-color);
+    justify-content: center;
+    width: 50%;
+    transition:0.5s;
+}
+
+
+.cart{
+    padding: 60px 0;
+}
+
+.cart table .cart-shop{
+
+    color: #fff;
+    background: var(--main-color);
+    padding: 15px;
+}
+
+.cart table .cart-check{
+    color: #ffffff;
+    background:#5e3;
+    padding: 15px;
 }
 
 @media screen and (max-width:1200px) {

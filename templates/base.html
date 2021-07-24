@@ -1,10 +1,11 @@
 {% load static %}
+
 <!DOCTYPE HTML>
 <html>
   <head>
       <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  {% load cart_tags %}
     <title>FIESU</title>
     
     <link href="{% static 'css/admin.css' %}"rel="stylesheet">
@@ -85,6 +86,16 @@
             <span class="fa fa-comment"></span>
             <div></div>
         </div>
+    {% if request.user.is_authenticated %}
+        <div class="cart">
+            <a href="{% url 'dashboard:cart_view' %}">
+            <span class="fa fa-shopping-cart my-cart-icon">
+                <span class="badge badge-notify z-depth-1 mr-1">{{request.user|cart_count}}</span>
+                </span>
+                <div></div>
+                </a>
+        </div>
+    {% endif %}
  
      </header>
     
