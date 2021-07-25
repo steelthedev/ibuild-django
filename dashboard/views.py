@@ -1,11 +1,15 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
+import requests
 from app.models import *
 from django.shortcuts import get_object_or_404 
 from random import randint
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from pypaystack import Transaction, Customer, Plan
+from django.contrib import messages
+from django.http.request import HttpRequest
+from django.http.response import HttpResponse
 
 
 # Create your views here.
@@ -59,11 +63,13 @@ def add_to_cart(request,slug):
                 messages.info(request,"item successfully added to cart")
                 return redirect('dashboard:desc', slug=slug)
         else:
-            random=randint(1000,70000)
-            order=Order.objects.create(customer=customer,user=user,transaction_id=random,complete=False)
+            rand_short = randint(0,1000)
+            rand_long = randint(0,30000)
+            ref = f"ref-{rand_short}-{rand_long}"
+            order=Order.objects.create(customer=customer,user=user,ref=ref,complete=False)
             order.products.add(order_item)
             messages.info(request,"Cart successfully created and item added")
-            return redirect('dashboard:dashboard',slug=slug)
+            return redirect('dashboard:dashboard')
     else:
         messages.info(request,"You must be logged in")
         return redirect('app:home')
@@ -71,7 +77,7 @@ def add_to_cart(request,slug):
 
 
 @login_required(login_url="accounts:login")
-def cart_view(request):
+def cart_view(request:HttpRequest) -> HttpResponse:
   user=request.user
   customer=request.user.profile
   try:
@@ -80,9 +86,6 @@ def cart_view(request):
         email = customer.email
         first_name = customer.first_name
         last_name = customer.last_name
-        rand_short = randint(0,1000)
-        rand_long = randint(0,30000)
-        ref = f"ref-{rand_short}-{rand_long}"
         paystack_secret = "sk_test_b1630e59eb70f2592023210935c7894455b9ac1b"
         paystack_public = "pk_test_ef1bea703713ac519754d7b88f3b56ea141c1d67"
         
@@ -92,7 +95,6 @@ def cart_view(request):
             'first_name':first_name,
             'last_name':last_name,
             'email':email,
-            'ref':ref,
             'paystack_secret':paystack_secret,
             'paystack_public':paystack_public,
             
@@ -110,32 +112,13 @@ def cart_view(request):
 
 
 
-def payment(request):
-    if request.user.is_authenticated:
-        user=request.user
-        customer=request.user.profile
-        order=Order.objects.get(customer=customer,user=user,complete=False)
-        
-        email = customer.email
-        first_name = customer.first_name
-        last_name = customer.last_name
-        rand_short = randint(0,1000)
-        rand_long = randint(0,30000)
-        ref = f"ref-{rand_short}-{rand_long}"
-        paystack_secret = "sk_test_b1630e59eb70f2592023210935c7894455b9ac1b"
-        paystack_public = "pk_test_ef1bea703713ac519754d7b88f3b56ea141c1d67"
-      
+def verify_payment(request:HttpRequest, ref) -> HttpResponse:
+    order = get_object_or_404(Order, ref=ref)
+    verified = order.verify_payment()
+    if verified:
+        messages.success(request," Alright mate ya done")
+    else:
+        messages.error(request,"verification failed ")
+    return redirect('dashboard:dashboard')
 
-        context = {
-            'order':order,
-            'first_name':first_name,
-            'last_name':last_name,
-            'email':email,
-            'ref':ref,
-            'paystack_secret':paystack_secret,
-            'paystack_public':paystack_public,
-            
-
-        }
-
-      
+    

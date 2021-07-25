@@ -61,6 +61,7 @@
                 <td colspan="5">
                   <a class="btn cart-shop btn-outline-white pull-right" href="{%  url 'dashboard:dashboard' %}">
                     Continue shopping
+                    
                   </a>
                 </td>
                 {% if order.get_cart_total %}
@@ -77,7 +78,7 @@
                         email: '{{email}}',
                         amount: {{order.get_cart_total}} * 100,
                         currency: "NGN",
-                        ref: '{{ref}}',
+                        ref: '{{order.ref}}',
                         firstname: '{{first_name}}',
                         lastname: '{{last_name}}',
                         // label: "Optional string that replaces customer email"
@@ -92,11 +93,11 @@
                         },
                         callback: function(response){
                             alert('success. transaction ref is ' + response.reference);
+
+                            window.location.href= "{% url 'dashboard:verify_payment' order.ref %}"
                         },
 
-                        callback: function(response){
-                            alert('declined. transaction ref is ' + response.reference);
-                        },
+                  
 
                         onClose: function(){
                             alert('window closed');
