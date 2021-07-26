@@ -40,13 +40,14 @@
                 <h2 class="text-center">
                     Send Us A Mail
                 </h2>
-                    <form action="">
+                    <form action="{% url 'app:contact' %}" method="POST">
+                        {% csrf_token %}
                         <div class="row justify-content-center">
                             <div class="col-lg-8 col-md-12  mt-2 ">
                                 
                             <div class="form-group">
                                 <label for="Full Name" class="form-label">Full Name </label>
-                                <input type="text" class="form-control" name="Full_name" minlength="10">
+                                <input type="text" class="form-control" name="full_name" minlength="10">
                             </div>
                             </div>
 
@@ -75,7 +76,7 @@
                                     </div>
 
                                     <div class="col-lg-8 col-md-12 mt-2 ">
-                                        <button class="btn btn-outline-white ">Push Your Message</button>
+                                        <button type="submit" class="btn btn-outline-white ">Push Your Message</button>
                                     </div>
                         </div>
                     </form>

@@ -116,9 +116,20 @@ def verify_payment(request:HttpRequest, ref) -> HttpResponse:
     order = get_object_or_404(Order, ref=ref)
     verified = order.verify_payment()
     if verified:
-        messages.success(request," Alright mate ya done")
+        messages.success(request," Alright mate you have successfullly purchsed our package")
     else:
         messages.error(request,"verification failed ")
     return redirect('dashboard:dashboard')
 
+
+def OrderHsitory(request):
+    user = request.user
+    customer = request.user.profile
+    completed_order = Order.objects.filter(user = user , customer = customer , complete = True)
+
+    if completed_order.exists():
+        context = {
+            'order':completed_order
+        }
+    return render(request, 'dashboard/order-history.html', context)
     

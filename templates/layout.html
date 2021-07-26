@@ -46,7 +46,20 @@
 				<li class="nav-item">
 					<a href="{% url 'app:contact' %} " class="nav-link nav-w">Contact Us</a>
 				</li>
+				{% if request.user.is_authenticated %}
+					
+				<li class="nav-item">
+					<a href="{% url 'dashboard:dashboard' %} " class="nav-link nav-w">Dashboard</a>
+				</li>
 
+				<li class="nav-item">
+					<a href="{% url 'accounts:logout' %}" class="nav-link nav-w">
+					Logout
+					</a>
+				</li>
+
+				{% else %}
+				
 				<li class="nav-item">
 					<a href="{% url 'accounts:login' %} " class="nav-link nav-w">Login</a>
 				</li>
@@ -55,6 +68,7 @@
 				<li class="nav-item">
 					<a href="{% url 'accounts:signup' %} " class="nav-link nav-w">Sign Up</a>
 				</li>
+				{% endif %}
 	</nav>
 
 

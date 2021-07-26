@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<section class="order-history">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h2>
+                My Order History  
+            </h2>
+            <div class="row">
+                {% for order in order %}
+                <div class="col-md-4 col-lg-4">
+                 
+
+                    {% for order_item in order.products.all %}
+                     {{order_item.product.name}}
+                     {{order_item.quantity}}
+                    {% endfor %}
+
+                    {{order.amount}}
+
+                    {{order.date_order}}
+
+                    {% if  order.complete == True %}
+
+                    Status: Paid
+
+                    {% else %}
+
+                    Status : Failed 
+
+                    {% endif %}
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
