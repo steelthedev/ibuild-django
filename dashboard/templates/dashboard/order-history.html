@@ -10,31 +10,39 @@
             <h2>
                 My Order History  
             </h2>
-            <div class="row">
+            
+            <div class="row mt-5 justify-content-center">
                 {% for order in order %}
-                <div class="col-md-4 col-lg-4">
+                <div class="col-md-4 col-lg-4 mt-3">
                  
+                    <div class="order-details">
+                      <div class="order-single">
 
                     {% for order_item in order.products.all %}
-                     {{order_item.product.name}}
-                     {{order_item.quantity}}
+                        <h2>
+                     {{order_item.product.name}}</h2
+                     >
+                     <span>Quantity:<span>
+                     {{order_item.quantity}}</span></span>
                     {% endfor %}
 
-                    {{order.amount}}
+                   <span>Amount:<span>{{order.amount}}</span></span> 
 
-                    {{order.date_order}}
+                   <span>Date:<span>{{order.date_order}}</span></span> 
 
                     {% if  order.complete == True %}
 
-                    Status: Paid
+                   <span>Status: Paid</span> 
 
                     {% else %}
 
-                    Status : Failed 
-
+                   <span>Status : Failed </span> 
                     {% endif %}
                 </div>
 
+                      </div>
+                    </div>
+                    
                 {% endfor %}
             </div>
         </div>
