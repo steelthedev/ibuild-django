@@ -247,14 +247,15 @@ main .dashboard-cards .card-single .card-footer{
 }
 
 
-.order-details{
+.order-history .order-details{
   padding: 20px;
 }
 
-.order-single{
+.order-history .order-details  .order-single{
   box-shadow:0px 7px 29px 0px rgba(116, 116, 116, 0.2) ;
   padding: 40px;
   margin: 10px 0;
+  
 }
 
 
